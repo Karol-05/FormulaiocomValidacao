@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário com Validação</title>
+    <style>
+        .message {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Formulário</h2>
+    <form id="numberForm">
+        <input type="number" id="campoA" name="campoA" placeholder="Campo A" required><br><br>
+
+        <input type="number" id="campoB" name="campoB" placeholder="Campo B" required><br><br>
+
+        <button type="submit">Enviar</button>
+        <div id="message" class="message"></div>
+    </form>
+
+    <script>
+        document.getElementById('numberForm').addEventListener('submit', function(event) {
+
+            event.preventDefault();
+
+
+            const campoA = parseFloat(document.getElementById('campoA').value);
+            const campoB = parseFloat(document.getElementById('campoB').value);
+
+
+            const message = document.getElementById('message');
+
+
+            if (campoB > campoA) {
+
+                message.textContent = 'Formulário válido: Campo B é maior que Campo A!';
+                message.className = 'message success';
+            } else {
+
+                message.textContent = 'Erro: Campo B deve ser maior que Campo A!';
+                message.className = 'message error';
+            }
+        });
+    </script>
+</body>
+</html>
